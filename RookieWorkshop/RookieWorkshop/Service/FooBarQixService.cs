@@ -17,7 +17,7 @@ namespace RookieWorkshop.Service
 
         public string GetData(int input)
         {
-            input = this._inputService.GetValue(input);
+            //input = this._inputService.GetValue(input);
 
             string result = string.Empty;
             string inputStr = input.ToString();

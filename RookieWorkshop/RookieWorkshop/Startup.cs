@@ -1,17 +1,16 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using Autofac;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using RookieWorkshop.CrossLayer;
 using RookieWorkshop.Interface;
 using RookieWorkshop.Service;
+//using Autofac;
 
 namespace RookieWorkshop
 {
@@ -28,9 +27,9 @@ namespace RookieWorkshop
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddTransient<IDataService, FooBarQixService>();
-            services.AddTransient<IUserService, UserService>();
-            services.AddTransient<IInputService, RandomService>();
+            //services.AddTransient<IDataService, FooBarQixService>();
+            //services.AddTransient<IUserService, UserService>();
+            //services.AddTransient<IInputService, RandomService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,6 +50,16 @@ namespace RookieWorkshop
             {
                 endpoints.MapControllers();
             });
+        }
+
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            //builder.RegisterType<UserService>().As<IUserService>();
+            //builder.RegisterType<FooBarQixService>().As<IDataService>();
+            //builder.RegisterType<RandomService>().As<IInputService>();
+
+            builder.RegisterModule<DataModule>();
+            builder.RegisterModule<UserModule>();
         }
     }
 }
