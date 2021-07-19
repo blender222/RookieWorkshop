@@ -8,12 +8,11 @@ using RookieWorkshop.Service;
 
 namespace RookieWorkshop.CrossLayer
 {
-    public class DataModule : Autofac.Module
+    public class UtilityModule : Autofac.Module
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<RandomService>().As<IInputService>().SingleInstance();
-            builder.RegisterType<FooBarQixService>().As<IDataService>().SingleInstance();
+            builder.RegisterType<CacheService>().As<ICacheService>().SingleInstance();
         }
     }
 }

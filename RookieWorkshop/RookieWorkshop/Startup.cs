@@ -60,6 +60,7 @@ namespace RookieWorkshop
 
             builder.RegisterModule<DataModule>();
             builder.RegisterModule<UserModule>();
+            builder.RegisterModule<UtilityModule>();
         }
     }
 }

@@ -29,10 +29,10 @@ namespace RookieWorkshop.Controllers
             
             return JsonSerializer.Serialize(userList);
         }
-        [HttpGet("data/{num}")]
-        public string GetData(int num)
+        [HttpGet("data/{input}")]
+        public string GetData(string input)
         {
-            string result = _dataService.GetData(num);
+            string result = _dataService.GetData(input);
 
             return result;
         }

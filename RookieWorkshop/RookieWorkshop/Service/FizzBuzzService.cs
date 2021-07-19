@@ -8,8 +8,10 @@ namespace RookieWorkshop.Service
 {
     public class FizzBuzzService : IDataService
     {
-        public string GetData(int num)
+        public string GetData(string input, bool isCleanCache)
         {
+            int num = int.Parse(input);
+
             string result;
 
             if (num % 3 == 0 && num % 5 == 0)

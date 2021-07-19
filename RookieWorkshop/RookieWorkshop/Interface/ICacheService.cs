@@ -5,8 +5,10 @@ using System.Threading.Tasks;
 
 namespace RookieWorkshop.Interface
 {
-    public interface IDataService
+    public interface ICacheService
     {
-        string GetData(string input, bool isCleanCache = false);
+        string Get<T>(string key, TimeSpan expireTime, Func<T> getDataFunc);
+
+        void Remove(string key);
     }
 }
