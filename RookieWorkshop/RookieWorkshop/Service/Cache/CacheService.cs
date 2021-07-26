@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
-using RookieWorkshop.Interface;
 using StackExchange.Redis;
 
-namespace RookieWorkshop.Service
+namespace RookieWorkshop.Service.Cache
 {
     public class CacheService : ICacheService
     {
@@ -16,7 +15,7 @@ namespace RookieWorkshop.Service
 
         public CacheService()
         {
-            this.redisConnection = ConnectionMultiplexer.Connect("localhost:6378");
+            this.redisConnection = ConnectionMultiplexer.Connect("localhost:6379");
             this.redisDB = redisConnection.GetDatabase();
         }
 

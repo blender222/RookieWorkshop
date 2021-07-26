@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 using RookieWorkshop.Model;
-using RookieWorkshop.Interface;
+using RookieWorkshop.Service.DataHub;
+using RookieWorkshop.Service.WebUser;
 
 namespace RookieWorkshop.Controllers
 {
@@ -29,10 +30,19 @@ namespace RookieWorkshop.Controllers
             
             return JsonSerializer.Serialize(userList);
         }
-        [HttpGet("data/{input}")]
+
+        [HttpGet("getData/{input}")]
         public string GetData(string input)
         {
             string result = _dataService.GetData(input);
+
+            return result;
+        }
+
+        [HttpGet("getDataAndSave/{input}")]
+        public string GetDataAndSave(string input)
+        {
+            string result = _dataService.GetDataAndSave(input);
 
             return result;
         }

@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using RookieWorkshop.Interface;
 
-namespace RookieWorkshop.Service
+namespace RookieWorkshop.Service.DataHub
 {
     public class FizzBuzzService : IDataService
     {
@@ -31,6 +30,11 @@ namespace RookieWorkshop.Service
                 result = num.ToString();
             }
             return result;
+        }
+
+        public string GetDataAndSave(string input, bool isCleanCache = false)
+        {
+            throw new NotImplementedException();
         }
     }
 }

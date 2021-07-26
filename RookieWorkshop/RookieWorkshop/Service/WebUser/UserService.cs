@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using RookieWorkshop.Interface;
 using RookieWorkshop.Model;
 
-namespace RookieWorkshop.Service
+namespace RookieWorkshop.Service.WebUser
 {
     public class UserService : IUserService
     {

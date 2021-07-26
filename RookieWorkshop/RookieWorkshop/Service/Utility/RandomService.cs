@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using RookieWorkshop.Interface;
 
-namespace RookieWorkshop.Service
+namespace RookieWorkshop.Service.Utility
 {
     public class RandomService : IInputService
     {

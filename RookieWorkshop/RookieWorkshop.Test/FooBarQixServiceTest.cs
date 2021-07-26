@@ -1,9 +1,11 @@
-﻿using Xunit;
-using RookieWorkshop.Service;
-using RookieWorkshop.Interface;
+﻿using System;
 using System.Collections.Generic;
+using Xunit;
+using RookieWorkshop.Service;
 using NSubstitute;
-using System;
+using RookieWorkshop.Service.Utility;
+using RookieWorkshop.Service.Cache;
+using RookieWorkshop.Service.DataHub;
 
 namespace RookieWorkshop.Test
 {

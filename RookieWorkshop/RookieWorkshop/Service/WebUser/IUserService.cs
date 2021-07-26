@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using RookieWorkshop.Model;
 
-namespace RookieWorkshop.Interface
+namespace RookieWorkshop.Service.WebUser
 {
     public interface IUserService
     {

@@ -2,22 +2,28 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using RookieWorkshop.Interface;
+using RookieWorkshop.Service.Cache;
+using RookieWorkshop.Service.Utility;
+using RookieWorkshop.Repository.FooBarQix;
+using RookieWorkshop.Table;
 
-namespace RookieWorkshop.Service
+namespace RookieWorkshop.Service.DataHub
 {
     public class FooBarQixService : IDataService
     {
+        private readonly IFooBarQixRepository _fooBarQixRepository;
+
         private readonly IInputService _inputService;
 
         private readonly ICacheService _cacheService;
 
-        public FooBarQixService(IInputService inputService, ICacheService cacheService)
+        public FooBarQixService(IFooBarQixRepository fooBarQixRepository, IInputService inputService, ICacheService cacheService)
         {
+            this._fooBarQixRepository = fooBarQixRepository;
             this._inputService = inputService;
             this._cacheService = cacheService;
         }
-        
+
         public string GetData(string input, bool isCleanCache)
         {
             string key = input;
@@ -28,7 +34,7 @@ namespace RookieWorkshop.Service
             }
 
             return this._cacheService.Get<string>(
-                key, 
+                key,
                 TimeSpan.FromSeconds(10),
                 () =>
                 {
@@ -73,6 +79,20 @@ namespace RookieWorkshop.Service
 
                     return result;
                 });
+        }
+
+        public string GetDataAndSave(string input, bool isCleanCache = false)
+        {
+            var result = this.GetData(input, isCleanCache);
+            var data = new Data
+            {
+                Data_Input = input,
+                Data_Result = result,
+            };
+
+            this._fooBarQixRepository.Insert(data);
+
+            return result;
         }
 
         //public string GetData(int input)

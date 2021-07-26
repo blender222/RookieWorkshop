@@ -1,6 +1,6 @@
 using Xunit;
 using RookieWorkshop.Service;
-using RookieWorkshop.Interface;
+using RookieWorkshop.Service.DataHub;
 
 namespace RookieWorkshop.Test
 {

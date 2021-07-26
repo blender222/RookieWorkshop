@@ -13,16 +13,16 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
-            string input = null;
-
-            do
+            while (true)
             {
                 Console.Write("input: ");
-                input = Console.ReadLine();
+                string input = Console.ReadLine();
+
+                if (input == "0") break;
 
                 string result = CallGetDataApi(input);
                 Console.WriteLine($"output: {result}\n");
-            } while (input != "0");
+            }
         }
         public static IEnumerable<User> CallUserApi()
         {
@@ -43,7 +43,7 @@ namespace ConsoleApp
         }
         public static string CallGetDataApi(string input)
         {
-            WebRequest request = WebRequest.Create("https://localhost:5001/api/data/" + input);
+            WebRequest request = WebRequest.Create("https://localhost:5001/api/getDataAndSave/" + input);
 
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
 
